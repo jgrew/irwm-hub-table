@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=https://ocgis.com/ocpw/irwm-proj-submit/",
+    "build": "vite build --base=https://ocgis.com/ocpw/envres/irwm-table/",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
@@ -25,7 +25,6 @@
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.5.25",
     "node-xlsx": "^0.21.0",
-    "rollup-plugin-copy": "^3.4.0",
-    "yup": "^0.32.11"
+    "rollup-plugin-copy": "^3.4.0"
   }
 }

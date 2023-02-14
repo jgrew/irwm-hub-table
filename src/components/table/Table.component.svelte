@@ -14,13 +14,13 @@
   }
 </script>
 
-<calcite-panel>
+<calcite-panel class="override">
   <calcite-block class="min-height pad-15" heightScale="l" open>
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <calcite-button
       slot="control"
       icon-start="download"
-      loading={$tableState != 'ready'}
+      loading={$tableState != "ready"}
       on:click={() => {
         tableStore.actions.export();
       }}>Download Table</calcite-button
@@ -30,8 +30,11 @@
 </calcite-panel>
 
 <style>
+  .override {
+    --calcite-ui-background: #ffffff;
+  }
   .min-height {
-    min-height: 500px;
+    min-height: 600px;
   }
   .pad-15 {
     padding: 15px;
