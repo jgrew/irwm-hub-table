@@ -11,6 +11,8 @@ import type {
 import { useMapStore } from "../map/Map.store";
 import { useConfigStore } from "../config/Config.store";
 
+import SpatialReference from "@arcgis/core/geometry/SpatialReference";
+
 import FeatureLayer from "@arcgis/core/layers/FeatureLayer";
 import FeatureTable from "@arcgis/core/widgets/FeatureTable";
 
@@ -60,7 +62,8 @@ export const useTableStore = (): TableStoreInterface => {
       const featureLayer = SvelteStore.get(writableTableStore).featureLayer;
       const config = SvelteStore.get(writableTableStore).config;
       const query = featureLayer.createQuery();
-      query.returnGeometry = false;
+      query.returnGeometry = true;
+      query.outSpatialReference = SpatialReference.WGS84;
       query.outFields = Object.keys(config.exportFields);
 
       let features: __esri.FeatureSet;

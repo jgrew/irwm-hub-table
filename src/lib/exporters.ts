@@ -101,6 +101,7 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
   const pdf_head = [
     {
       ProjectName: "Project Name",
+      Agency: "Agency",
       SWRPProjectScore: "Prioritization Score",
       ProjectStatus: "Project Status",
       EstimatedTotalProjectCost: "Project Cost ($)",
@@ -115,12 +116,15 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
       AdditionalBenefitQuantity: "Value",
       AdditionalBenefitUnits: "Units for Other Benefit",
       UseOfPublicLands: "Use of Public Lands",
+      Long: "Longitude",
+      Lat: "Latitude"
     },
   ];
 
   Object.keys(features.features).map((key: string) => {
     pdf_body.push({
       ProjectName: features.features[key].attributes["ProjectName"],
+      Agency: features.features[key].attributes['Agency'],
       SWRPProjectScore: features.features[key].attributes["SWRPProjectScore"],
       ProjectStatus: features.features[key].attributes["ProjectStatus"],
       EstimatedTotalProjectCost: new Intl.NumberFormat("en-US", {
@@ -145,6 +149,8 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
       AdditionalBenefitUnits:
         features.features[key].attributes["AdditionalBenefitUnits"],
       UseOfPublicLands: features.features[key].attributes["UseOfPublicLands"],
+      Long: features.features[key].geometry['x'].toFixed(6),
+      Lat: features.features[key].geometry['y'].toFixed(6)
     });
 
     totalCost =
@@ -177,6 +183,7 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
     styles: { cellPadding: 0.5, fontSize: 8 },
     columns: [
       { header: "Project Name", dataKey: "ProjectName" },
+      { header: "Agency", dataKey: "Agency" },
       { header: "Prioritization Score", dataKey: "SWRPProjectScore" },
       {
         header: "Total Project Cost ($)",
@@ -196,6 +203,8 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
       { header: "Value", dataKey: "AdditionalBenefitQuantity" },
       { header: "Units for Other Benefit", dataKey: "AdditionalBenefitUnits" },
       { header: "Use of Public Lands", dataKey: "UseOfPublicLands" },
+      { header: "Latitude", dataKey: "Lat" },
+      { header: "Longitude", dataKey: "Long" },
     ],
     didParseCell: function (data: any) {
       var rows = data.table.body;
