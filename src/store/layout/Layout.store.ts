@@ -5,7 +5,6 @@ import type {
   LayoutStoreGettersInterface,
   LayoutStoreActionsInterface,
 } from "./models/index";
-import type { LayoutMode } from "$models/index";
 
 const writableLayoutStore = SvelteStore.writable<LayoutStateInterface>({
   activePanel: "legend",
@@ -14,7 +13,6 @@ const writableLayoutStore = SvelteStore.writable<LayoutStateInterface>({
     right: true,
     center: true,
   },
-  mode: 'select',
   shellConfig: {
     top: [
       {
@@ -61,13 +59,6 @@ export const useLayoutStore = (): LayoutStoreInterface => {
         return state;
       });
     },
-    setActiveMode: (mode: LayoutMode) => {
-      console.log("LayoutStore: action: setActiveMode", { mode });
-      writableLayoutStore.update((state) => {
-        state.mode = mode;
-        return state;
-      });
-    },
   };
 
   const shellConfig = SvelteStore.derived(
@@ -85,16 +76,10 @@ export const useLayoutStore = (): LayoutStoreInterface => {
     ($state) => $state.collapsed
   );
 
-  const mode = SvelteStore.derived(
-    writableLayoutStore,
-    ($state) => $state.mode
-  );
-
   const getters: LayoutStoreGettersInterface = {
     shellConfig,
     activePanel,
     collapsed,
-    mode,
   };
 
   return {

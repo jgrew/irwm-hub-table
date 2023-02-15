@@ -1,5 +1,5 @@
 import type { Readable } from "svelte/store";
-import type { CalciteActionBarConfig, Collapsed, LayoutMode } from "$models/index";
+import type { CalciteActionBarConfig, Collapsed } from "$models/index";
 
 /**
  * @name LayoutStoreActionsInterface
@@ -11,7 +11,6 @@ export interface LayoutStoreActionsInterface {
    * @param {string} nextPanel panel name, should match shell config
    */
   setActivePanel(nextPanel: string): void;
-  setActiveMode(mode: LayoutMode): void;
 }
 
 /**
@@ -26,7 +25,6 @@ export interface LayoutStoreGettersInterface {
   activePanel: Readable<string>;
   /** Object representing collapsed prop for various calcite-shell-panels */
   collapsed: Readable<Collapsed>;
-  mode: Readable<LayoutMode>;
 }
 
 /**
