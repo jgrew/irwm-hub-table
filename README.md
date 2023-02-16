@@ -10,35 +10,27 @@ Svelte is a new way to build web applications. It's a compiler that takes your d
 Learn more at the [Svelte website](https://svelte.dev), or stop by the [Discord chatroom](https://svelte.dev/chat).
 
 
-# Development
+## Usage
 
-Clone this repo
-```
-git clone
-cd irwm-hub-table
-npm install
-```
 
-Run development server
-```
+Run the application in development mode with a local development server.
+```sh
 npm run dev
 ```
 
-Building
+Build the application for deployment.
 
-Edit base url in package.json "vite build --base=path/to/host/location" 
 
-See more here: [Vite Public Base Path](https://vitejs.dev/guide/build.html)
-
-```
+Edit base url in package.json "vite build --base=path/to/host/location". See more here: [Vite Public Base Path](https://vitejs.dev/guide/build.html)
+```sh
 npm run build
 ```
 
 
-# Configuration
+## Configuration
 
 
-## url parameters
+### url parameters
 
 Example url parameters
 ```
