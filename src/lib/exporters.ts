@@ -101,7 +101,7 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
   const pdf_head = [
     {
       ProjectName: "Project Name",
-      Agency: "Agency",
+      AgencyName: "Agency",
       SWRPProjectScore: "Prioritization Score",
       ProjectStatus: "Project Status",
       EstimatedTotalProjectCost: "Project Cost ($)",
@@ -117,14 +117,14 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
       AdditionalBenefitUnits: "Units for Other Benefit",
       UseOfPublicLands: "Use of Public Lands",
       Long: "Longitude",
-      Lat: "Latitude"
+      Lat: "Latitude",
     },
   ];
 
   Object.keys(features.features).map((key: string) => {
     pdf_body.push({
       ProjectName: features.features[key].attributes["ProjectName"],
-      Agency: features.features[key].attributes['Agency'],
+      AgencyName: features.features[key].attributes["AgencyName"],
       SWRPProjectScore: features.features[key].attributes["SWRPProjectScore"],
       ProjectStatus: features.features[key].attributes["ProjectStatus"],
       EstimatedTotalProjectCost: new Intl.NumberFormat("en-US", {
@@ -149,8 +149,8 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
       AdditionalBenefitUnits:
         features.features[key].attributes["AdditionalBenefitUnits"],
       UseOfPublicLands: features.features[key].attributes["UseOfPublicLands"],
-      Long: features.features[key].geometry['x'].toFixed(6),
-      Lat: features.features[key].geometry['y'].toFixed(6)
+      Long: features.features[key].geometry["x"].toFixed(6),
+      Lat: features.features[key].geometry["y"].toFixed(6),
     });
 
     totalCost =
@@ -183,7 +183,7 @@ const exportSWRPPDF = (features: __esri.FeatureSet) => {
     styles: { cellPadding: 0.5, fontSize: 8 },
     columns: [
       { header: "Project Name", dataKey: "ProjectName" },
-      { header: "Agency", dataKey: "Agency" },
+      { header: "Agency", dataKey: "AgencyName" },
       { header: "Prioritization Score", dataKey: "SWRPProjectScore" },
       {
         header: "Total Project Cost ($)",

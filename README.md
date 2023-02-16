@@ -14,8 +14,8 @@ Learn more at the [Svelte website](https://svelte.dev), or stop by the [Discord 
 
 Clone this repo
 ```
-git clone https://github.com/jgrew/irwm-hub-table.git
-cd land-development
+git clone
+cd irwm-hub-table
 npm install
 ```
 
@@ -34,11 +34,17 @@ See more here: [Vite Public Base Path](https://vitejs.dev/guide/build.html)
 npm run build
 ```
 
+
 # Configuration
-Each table configuration is looked up by providing a url parameter like so:
+
+
+## url parameters
+
+Example url parameters
 ```
-https://ocgis.com/ocpw/envres/irwm-table/index.html?key=swrp
+https://ocgis.com/ocpw/envres/irwm-table/index.html?key=swrp&ver=1
 ```
 
 
-This urlKey is used in /src/store/config to set relevant configuration
+Each table configuration is looked up by providing the "key" url parameter. This key is used in /src/store/config to set relevant configuration.
+The url parameter ver does nothing, but can be changed to force the ESRI hubsite to create a new cache.

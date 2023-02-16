@@ -35,6 +35,14 @@ export const useConfigStore = (): ConfigStoreInterface => {
     getUrlParameters: () => {
       console.log("ConfigStore: action: getUrlParameters");
       const urlParameters = new URLSearchParams(window.location.search);
+
+      const hasVer = urlParameters.has("ver");
+
+      if (hasVer) {
+        const ver = urlParameters.get('ver')
+        console.log("ConfigStore:", {ver})
+      }
+
       const hasKey = urlParameters.has("key");
       let urlKey: string = null;
 
